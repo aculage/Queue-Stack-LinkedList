@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from linkedlist import *
-from queue import *
+from cqueue import *
 from stack import *
 
 #entry
@@ -130,6 +130,25 @@ clearButtonS.grid(column = 1, row = 3)
 tabQueue = ttk.Frame(tab)
 tab.add (tabQueue, text = "Queue")
 tab.pack (expand=1, fill='both')
+
+que = Queue()
+#label
+labelQ=Label(tabQueue, text ='Press the button',font = ("Consolas", 18))
+labelQ.grid(column = 0, row = 0)
+
+def copyQueue ():
+    fin = open('text.txt','r')
+    arrstr = fin.read().split()
+    for i in arrstr :
+            que.insert(i)
+    txt = ''
+    while que.length != 0 :
+        txt += que.pop() + ' '
+    labelQ.configure(text=txt)
+
+#button
+buttonCopy = Button(tabQueue, text = "Copy", font=("Consolas", 18), command = copyQueue)
+buttonCopy.grid(column = 0, row = 1)
 
 
 #finisher loop
